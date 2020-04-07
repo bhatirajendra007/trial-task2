@@ -3,14 +3,10 @@ pipeline {
 			agent any
 			stages {
 				stage('Source'){
-					steps{
-						git 'https://github.com/bhatirajendra007/trial-task2.git
-					}
+					git 'https://github.com/bhatirajendra007/trial-task2.git
 				}
 				stage('Build') {
-    					steps {
-    					    bat "\"${tool 'MSBuild'}\" AspDotNetJenkins.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SkipInvalidConfigurations=true /t:build /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeleteExistingFiles=True /p:publishUrl=c:\\inetpub\\wwwroot\\trial-task2"
-    					}
+    				 bat "\"${tool 'MSBuild'}\" CoreWeb.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SkipInvalidConfigurations=true /t:build /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeleteExistingFiles=True /p:publishUrl=c:\\inetpub\\wwwroot"
 				}
 			}
 }
